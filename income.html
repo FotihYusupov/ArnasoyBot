@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tovar kirimi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-[10px]">
+  <h1 class="my-[15px] text-center text-3xl font-bold">Tovar kirimi</h1>
+  <div class="max-w-md mx-auto p-4 rounded-lg border border-gray-300">
+    <form id="incomeForm">
+      <p id="partyId" class="text-lg mb-2">Party ID:</p>
+      <select id="partyClient" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
+        <option disabled selected>Client</option>
+      </select>
+      <select id="partyLogist" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
+        <option disabled selected>Logist</option>
+      </select>
+      <input id="departureDate" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" type="date" required>
+      <input id="transportNumber" type="text" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" placeholder="Transport raqami" required>
+      <input id="invoice" type="text" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" placeholder="Invoice" required>
+      <input id="departureDate" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" type="date" required>
+      <select id="partyLogist" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
+        <option disabled selected>Status</option>
+        <option value="1">Yo'lda</option>
+        <option value="2">Bojxona rejimi im-70</option>
+        <option value="3">Bojxona rejimi im-74</option>
+        <option value="4">Bojxona rejimi im-40</option>
+        <option value="5">Omborga kelib tushgan</option>
+      </select>
+      <select id="warehousesList" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
+        <option disabled selected>Ombor</option>
+      </select>
+      <div id="productCategoriesList"></div>
+        <!-- <div id="plus" class="flex justify-between mb-2">
+          <p>Qo'shimcha</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+        </div>
+      </div> -->
+      <button type="submit" class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+    </form>
+  </div>
+  <script src="./js/income.js"></script>
+</body>
+</html>
