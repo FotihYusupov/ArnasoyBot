@@ -6,7 +6,7 @@
   <title>Tovar kirimi</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="p-[10px]">
+<body class="p-[10px]" style="background-color: #ffffff;">
   <h1 class="my-[15px] text-center text-3xl font-bold">Tovar kirimi</h1>
   <div class="max-w-md mx-auto p-4 rounded-lg border border-gray-300">
     <form id="incomeForm">
@@ -20,8 +20,8 @@
       <input id="departureDate" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" type="date" required>
       <input id="transportNumber" type="text" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" placeholder="Transport raqami" required>
       <input id="invoice" type="text" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" placeholder="Invoice" required>
-      <input id="departureDate" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" type="date" required>
-      <select id="partyLogist" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
+      <input id="invoiceDate" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" type="date" required>
+      <select id="status" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
         <option disabled selected>Status</option>
         <option value="1">Yo'lda</option>
         <option value="2">Bojxona rejimi im-70</option>
@@ -32,6 +32,7 @@
       <select id="warehousesList" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" required>
         <option disabled selected>Ombor</option>
       </select>
+      <textarea id="comment" class="w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400" placeholder="Komment..."></textarea>
       <div id="productCategoriesList"></div>
         <!-- <div id="plus" class="flex justify-between mb-2">
           <p>Qo'shimcha</p>

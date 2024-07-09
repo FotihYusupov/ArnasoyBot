@@ -3,7 +3,13 @@ const URL = "http://192.168.1.102:4002/api";
 const clientsList = window.document.querySelector("#partyClient");
 const logistList = window.document.querySelector("#partyLogist");
 const warehousesList = window.document.querySelector("#warehousesList");
-const productCategoriesList = window.document.querySelector("#productsList");
+const productCategoriesList = window.document.querySelector("#productCategoriesList");
+const departureDate = window.document.querySelector("#departureDate")
+const transportNumber = window.document.querySelector("#transportNumber")
+const commentInp = window.document.querySelector("#comment")
+const invoiceInp = window.document.querySelector("#invoice")
+const invoiceDate = window.document.querySelector("#invoiceDate")
+const statusSel = window.document.querySelector("#status")
 
 const token = JSON.parse(window.localStorage.getItem("token"));
 async function getMe() {
@@ -27,6 +33,8 @@ async function getMe() {
 
 getMe();
 
+
+var id = 0
 async function renderItems() {
   let resId = await fetch(`${URL}/parties/generate-id`, {
     headers: {
@@ -34,6 +42,8 @@ async function renderItems() {
     },
   });
   resId = await resId.json();
+  id = resId.id
+  console.log(resId.id);
   partyId.textContent = `Id: ${resId.id}`;
   let resClients = await fetch(`${URL}/clients`, {
     headers: {
@@ -75,7 +85,7 @@ async function renderProductsList(increment = false) {
   
   const hero = document.createElement("div");
   hero.classList = 'flex mt-[10px] border-b-4 mb-[10px]';
-  hero.id = `wrapper-${counter}`;
+  hero.id = `wrapper`;
   
   const wrapper = document.createElement("div");
 
@@ -85,7 +95,7 @@ async function renderProductsList(increment = false) {
   selectLabel.classList = "block mb-1";
 
   const select = document.createElement("select");
-  select.id = `productCategorySelect-${counter}`;
+  select.id = `productCategorySelect`;
   select.classList = "w-full mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400";
   select.required = true; // Make select required
 
@@ -101,14 +111,13 @@ async function renderProductsList(increment = false) {
   
   const priceLabel = document.createElement("label");
   priceLabel.textContent = "Narxi";
-  priceLabel.htmlFor = `priceInp-${counter}`;
+  priceLabel.htmlFor = `priceInp`;
   priceLabel.classList = "block mb-1";
 
   const priceInp = document.createElement("input");
   priceInp.placeholder = "Narxi";
-  priceInp.type = "number";
-  priceInp.min = 0;
-  priceInp.id = `priceInp-${counter}`;
+  // priceInp.type = "number";
+  priceInp.id = `priceInp`;
   priceInp.classList = "w-[48%] mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400";
   priceInp.value = resProductCategories.data[0].price;
   priceInp.required = true; // Make price input required
@@ -117,14 +126,13 @@ async function renderProductsList(increment = false) {
   labelWrapper.classList = "flex"
   const salePriceLabel = document.createElement("label");
   salePriceLabel.textContent = "Miqdori";
-  salePriceLabel.htmlFor = `salePriceInp-${counter}`;
+  salePriceLabel.htmlFor = `salePriceInp`;
   salePriceLabel.classList = "w-[47%] mr-[10px] mb-1";
 
   const salePriceInp = document.createElement("input");
   salePriceInp.placeholder = "Miqdori";
-  salePriceInp.type = "number";
-  salePriceInp.min = 1;
-  salePriceInp.id = `salePriceInp-${counter}`;
+  // salePriceInp.type = "number";
+  salePriceInp.id = `salePriceInp`;
   salePriceInp.classList = "w-[47%] mr-[10px] mb-2 px-4 py-2 text-gray-900 bg-white border rounded-md focus:outline-none focus:border-blue-500 hover:border-blue-400";
   salePriceInp.value = 0;
   salePriceInp.required = true; // Make sale price input required
@@ -182,12 +190,43 @@ async function renderProductsList(increment = false) {
 
 renderProductsList();
 
-const incomeForm = document.querySelector("#incomeForm")
-
-incomeForm.addEventListener("submit", () => {
+incomeForm.addEventListener("submit", async (e) => {
   try {
-    
+    e.preventDefault()
+    const products = []
+    const productsList = document.querySelectorAll("#wrapper");
+    for (let i = 0; i < productsList.length; i++) {
+      const obj = {
+        productId: productsList[i].querySelector('#productCategorySelect').value,
+        amount: productsList[i].querySelector('#salePriceInp').value,
+        price: productsList[i].querySelector('#priceInp').value,
+      }
+      products.push(obj)
+    }
+    let res = await fetch(`${URL}/parties`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer: ${token}`,
+    },
+    body: JSON.stringify({
+      id: id,
+      client: clientsList.value,
+      logistic: logistList.value,
+      departureDate: new Date(departureDate.value).getTime(),
+      transportNumber: transportNumber.value,
+      comment: commentInp.value,
+      invoice: invoiceInp.value,
+      invoiceDate: new Date(invoiceDate.value).getTime(),
+      status: statusSel.value,
+      warehouse: warehousesList.value,
+      products: products,
+      total: 15
+    })
+    });
+    res = await res.json();
   } catch (err) {
+    console.log(err);
     console.log("hello")
   }
 })
