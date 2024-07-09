@@ -225,8 +225,17 @@ incomeForm.addEventListener("submit", async (e) => {
     })
     });
     res = await res.json();
+    Swal.fire({
+      icon: "success",
+      title: "Your work has been saved",
+      showConfirmButton: false,
+      timer: 1500
+    });
   } catch (err) {
-    console.log(err);
-    console.log("hello")
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Qandaydir xatolik yuz berdi!",
+    });
   }
 })

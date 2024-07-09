@@ -42,8 +42,9 @@ async function getWarehouses() {
     const warehousesList = document.createDocumentFragment();
 
     for (const item of res.data) {
-      const p = document.createElement("p");
-      p.className = "block p-[30px] bg-blue-500 mb-2 rounded text-center text-lg";
+      const p = document.createElement("a");
+      p.href = `/warehouse.html?id=${item._id}`
+      p.className = "block font-bold text-white p-[30px] bg-blue-500 mb-2 rounded text-center text-lg";
       p.textContent = item.name;
       warehousesList.appendChild(p);
     }

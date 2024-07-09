@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .active {
+      background: #ff0000;
+    }
+  </style>
+</head>
+<body class="p-[20px]">
+  <h1 class="mb-[10px] text-center text-2xl font-bold">Partiyalar</h1>
+  <ul id="partiesList" class="list-none p-[10px] bg-zinc-100 rounded">
+    <li class="flex justify-between border-b-4">
+      <p class="text-lg font-bold text-center w-[5%]">Id</p>
+      <p class="text-lg font-bold text-center w-[20%]">Invoice</p>
+      <p class="text-lg font-bold text-center w-[35%]">Invoice Date</p>
+      <p class="text-lg font-bold text-center w-[30%]">Transport</p>
+    </li>
+  </ul>
+  <script src="./js/warehouse.js"></script>
+</body>
+</html>
