@@ -1,4 +1,4 @@
-const URL = "http://192.168.1.102:4002/api"
+const URL = "http://193.187.96.97:4002/api"
 
 const loginForm = window.document.querySelector("#loginForm");
 const loginInp = window.document.querySelector("#username");
