@@ -75,12 +75,11 @@ async function getParties(page = 1) {
       </li>
     `;
   }
-  
   // Add pagination controls
   partiesList.innerHTML += `
     <div class="flex justify-center mt-4">
       <button onclick="prevPage()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''}" ${page === 1 ? 'disabled' : ''}>Prev</button>
-      <button onclick="nextPage()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded ${page === partiesRes._meta.totalPages ? 'opacity-50 cursor-not-allowed' : ''}" ${page === partiesRes._meta.totalPages ? 'disabled' : ''}>Next</button>
+      <button onclick="nextPage()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded ${page === partiesRes._meta.totalPages ? 'opacity-50 cursor-not-allowed' : partiesRes._meta.totalPages === 0 ? "opacity-50 cursor-not-allowed" : ""}" ${page === partiesRes._meta.totalPages ? 'disabled' : partiesRes._meta.totalPages === 0 ? "disabled" : ""}>Next</button>
     </div>
   `;
   
