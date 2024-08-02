@@ -1,4 +1,4 @@
-const URL = "http://193.187.96.97:4002/api"
+const URL = "https://api.accserp.com/api"
 
 const token = JSON.parse(window.localStorage.getItem("token"))
 async function getMe () {

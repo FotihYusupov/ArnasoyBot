@@ -1,4 +1,4 @@
-const URL = "http://193.187.96.97:4002/api"
+const URL = "https://api.accserp.com/api"
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
